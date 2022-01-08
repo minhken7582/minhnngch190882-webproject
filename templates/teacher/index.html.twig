@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container-md col-md-8 text-center">
+		<table class="table table-striped|sm|bordered|hover|inverse table-inverse table-responsive">
+			<thead class="thead-inverse|thead-default">
+				<tr>
+					<th>Teacher ID</th>
+					<th>Teacher Name</th>
+					<th>Teacher Email</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for teacher in teachers %}
+					<tr>
+						<td scope="row">{{ teacher.id }}</td>
+						<td>
+							{{ teacher.name }}
+						</td>
+						<td>
+							{{ teacher.email }}
+						</td>
+						<td>
+							<a class="btn btn-info" href="{{ path('teacher_detail', {'id': teacher.id })}}"></a>
+							Detail
+						</td>
+						<td>
+							<a href="{{ path('teacher_edit', {'id': teacher.id })}}">
+								<img src="{{ asset('pictures/edit.png')}}" height="15" width="15">
+							</a>
+						</td>
+						<td>
+							<a href="{{ path('teacher_delete', {'id': teacher.id })}}"
+							onclick = "return confirm('Are you sure?')"
+							>
+								<img src="{{ asset('pictures/delete.png')}}" height="15" width="15">
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
+

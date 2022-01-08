@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container-md col-md-8 text-center">
+		<table class="table table-striped|sm|bordered|hover|inverse table-inverse table-responsive">
+			<thead class="thead-inverse|thead-default">
+				<tr>
+					<th>Teacher ID</th>
+					<th>Teacher Name</th>
+					<th>Teacher Birthday</th>
+					<th>Teacher Address</th>
+					<th>Teaching Subject</th>
+					<th>Teacher Mobile</th>
+					<th>Teacher Email</th>
+					<th>Subject</th>
+				</tr>
+			</thead>
+			<tbody>
+					<tr>
+						<td scope="row">{{ teacher.id }}</td>
+						<td>
+							{{ teacher.name }}
+						</td>
+						<td>
+							{{ teacher.birthday | date('d/m/Y')}}
+						</td>
+						<td>
+							{{ teacher.address }}
+						</td>
+						<td>
+							{% for subject in teacher.subjects %}
+								<a href="{{ path('subject_detail', {'id' : subject.id}) }}"></a>
+								{{ subject.name }}
+							{% endfor %}
+						</td>
+						<td>
+							{{ teacher.mobile }}
+						</td>
+						<td>
+							{{ teacher.email }}
+						</td>
+						<td>
+							{% for subject in teacher.subjects %}
+								<a class="text-decoration-none" href="{{ path('subject_detail', {'id' : subject.id }) }}">
+									{{ subject.name }}
+								</a>
+								<br>
+							{% endfor %}
+						</td>
+						<td>
+							<a href="{{ path('teacher_edit', {'id': teacher.id })}}">
+								<img src="{{ asset('pictures/edit.png')}}" height="20" width="20">
+							</a>
+						</td>
+						<td>
+							<a href="{{ path('teacher_delete', {'id': teacher.id })}}"
+							onclick = "return confirm('Are you sure?')"
+							>
+								<img src="{{ asset('pictures/delete.png')}}" height="20" width="20">
+							</a>
+						</td>
+					</tr>
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
+
