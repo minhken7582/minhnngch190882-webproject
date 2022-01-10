@@ -9,7 +9,6 @@
 					<th>Teacher Name</th>
 					<th>Teacher Birthday</th>
 					<th>Teacher Address</th>
-					<th>Teaching Subject</th>
 					<th>Teacher Mobile</th>
 					<th>Teacher Email</th>
 					<th>Subject</th>
@@ -26,12 +25,6 @@
 						</td>
 						<td>
 							{{ teacher.address }}
-						</td>
-						<td>
-							{% for subject in teacher.subjects %}
-								<a href="{{ path('subject_detail', {'id' : subject.id}) }}"></a>
-								{{ subject.name }}
-							{% endfor %}
 						</td>
 						<td>
 							{{ teacher.mobile }}

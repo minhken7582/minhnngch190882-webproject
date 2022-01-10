@@ -19,8 +19,8 @@ class SubjectController extends AbstractController
      */
     public function subjectIndex()
     {
-        $subjects = $this->getDoctrine()->getRepository(Subject::class)->findAll();
-        return $this->render("subject/index.html.twig",
+        $subjects = $this->getDoctrine()->getRepository(Subject::class)->findAll();     //access to data source
+        return $this->render("subject/index.html.twig",                                 //render to View
         [
             'subjects' => $subjects
         ]);
